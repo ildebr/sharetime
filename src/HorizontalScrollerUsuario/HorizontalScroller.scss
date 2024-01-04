@@ -1,0 +1,126 @@
+.scroller {
+    max-width: 100%;
+  }
+  
+  .scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+.scroller[data-animated="true"]{
+    overflow: hidden;
+
+    -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner{
+    flex-wrap: nowrap;
+    animation: scroll 40s forwards linear infinite;
+    width: max-content;
+}
+
+.scroller:hover .scroller__inner{
+    animation-play-state: paused;
+}
+
+.scroller__inner li{
+    margin-top: 0;
+    
+    height: fit-content;
+
+    svg{
+        max-width: 20px;
+        max-height: 20px;   
+        color: #016df4 ;
+    }
+}
+
+.scroller.small-objects{
+    .scroller__inner li{
+        padding: .3rem .6rem;
+        background-color: #1c394e;
+        border-radius: 40px;
+        vertical-align: middle;
+        transition: .5s ease;
+
+        &:hover{
+            background-color: #41586b;
+        }
+        
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            gap: .5rem;
+        }
+        
+    }
+}
+
+// .scroller__inner li:hover{
+//     margin-top: -1rem;
+// }
+
+
+.scroller li{
+    background-color: white;
+    list-style-type: none;
+}
+
+@keyframes scroll {
+    to{
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+.second{
+    background-color: red !important;
+}
+
+.user__scroller{
+    li{
+        padding: 1.5rem 1.5rem;
+        border-radius: 15px;
+        max-width: 408px;
+    }
+    text-align: left;
+    &__header{
+        display: flex;
+        position: relative;
+        padding-left: 120px;
+        margin-bottom: 1rem;
+        font-size: 16px;
+        font-weight: 700;
+        color: #016df4;
+        img{
+            position: absolute;
+            max-width: 100px;
+            border-radius: 500px;
+            left: 0;
+            bottom: 0;
+        }
+    }
+    &__content{
+        font-size: 18px;
+        margin-bottom: 1rem;
+    }
+
+    .scroller__inner{
+        padding: 3rem 1rem;
+    }
+}
+
+
+.scroller[data-speed="slow"] .scroller__inner{
+    animation-duration: 200s;
+}
